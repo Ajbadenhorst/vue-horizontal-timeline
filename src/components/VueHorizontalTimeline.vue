@@ -47,157 +47,157 @@
 
 <script>
 export default {
-  created() {
-    console.log("here", this.items);
+  created () {
+    console.log('here', this.items)
   },
-  name: "VueHorizontalTimeline",
+  name: 'VueHorizontalTimeline',
   props: {
     items: {
       type: Array,
-      required: true,
+      required: true
     },
     itemSelected: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
     itemUniqueKey: {
       type: String,
-      default: "",
+      default: ''
     },
     imageUrlAttr: {
       type: String,
-      default: "imageUrl",
+      default: 'imageUrl'
     },
     titleAttr: {
       type: String,
-      default: "title",
+      default: 'title'
     },
     titleCentered: {
       type: Boolean,
-      default: false,
+      default: false
     },
     titleClass: {
       type: String,
-      default: "",
+      default: ''
     },
     titleSubstr: {
       type: Number,
-      default: 18,
+      default: 18
     },
     contentAttr: {
       type: String,
-      default: "content",
+      default: 'content'
     },
     contentCentered: {
       type: Boolean,
-      default: false,
+      default: false
     },
     contentClass: {
       type: String,
-      default: "",
+      default: ''
     },
     contentSubstr: {
       type: Number,
-      default: 250,
+      default: 250
     },
     minWidth: {
       type: String,
-      default: "200px",
+      default: '200px'
     },
     minHeight: {
       type: String,
-      default: "",
+      default: ''
     },
     timelinePadding: {
       type: String,
-      default: "",
+      default: ''
     },
     timelineBackground: {
       type: String,
-      default: "",
+      default: ''
     },
     lineColor: {
       type: String,
-      default: "#03A9F4",
+      default: '#03A9F4'
     },
     clickable: {
       type: [String, Boolean],
-      default: true,
-    },
+      default: true
+    }
   },
   filters: {
-    textSubstr(value, qtd = 250, mask = "...") {
+    textSubstr (value, qtd = 250, mask = '...') {
       return value && value.length > qtd
         ? `${value.substring(0, qtd)}${mask}`
-        : value;
-    },
+        : value
+    }
   },
   computed: {
-    setTimelineStyles() {
-      const { timelineBackground, timelinePadding } = this;
-      const styleObj = {};
+    setTimelineStyles () {
+      const { timelineBackground, timelinePadding } = this
+      const styleObj = {}
 
       if (timelinePadding) {
-        styleObj.padding = timelinePadding;
+        styleObj.padding = timelinePadding
       }
 
       if (timelineBackground) {
-        styleObj.background = timelineBackground;
+        styleObj.background = timelineBackground
       }
 
-      return styleObj;
+      return styleObj
     },
-    setLineColor() {
-      const { lineColor } = this;
+    setLineColor () {
+      const { lineColor } = this
 
-      return lineColor ? `background: ${lineColor}` : "";
+      return lineColor ? `background: ${lineColor}` : ''
     },
-    getTimeStyles() {
-      const { minWidth, minHeight, clickable } = this;
+    getTimeStyles () {
+      const { minWidth, minHeight, clickable } = this
       const styleObj = {
         minWidth,
-        minHeight,
-      };
+        minHeight
+      }
 
       if (!clickable) {
-        styleObj.cursor = "default";
+        styleObj.cursor = 'default'
       }
 
-      return styleObj;
+      return styleObj
     },
-    getTitleClasses() {
-      const { titleClass, titleCentered } = this;
+    getTitleClasses () {
+      const { titleClass, titleCentered } = this
 
-      return titleClass || { "text-center": titleCentered };
+      return titleClass || { 'text-center': titleCentered }
     },
-    getContentClasses() {
-      const { contentClass, contentCentered } = this;
+    getContentClasses () {
+      const { contentClass, contentCentered } = this
 
-      return contentClass || { "text-center": contentCentered };
-    },
+      return contentClass || { 'text-center': contentCentered }
+    }
   },
   methods: {
-    cardClicked(item) {
+    cardClicked (item) {
       if (!this.clickable) {
-        return;
+        return
       }
 
-      this.$emit("update:itemSelected", { ...item });
-      this.$emit("click", item);
+      this.$emit('update:itemSelected', { ...item })
+      this.$emit('click', item)
     },
-    getTimeClass(item) {
-      const { itemUniqueKey, itemSelected } = this;
+    getTimeClass (item) {
+      const { itemUniqueKey, itemSelected } = this
 
       if (itemUniqueKey && itemSelected) {
         return {
-          "border-blue": item[itemUniqueKey] === itemSelected[itemUniqueKey],
-        };
+          'border-blue': item[itemUniqueKey] === itemSelected[itemUniqueKey]
+        }
       }
 
-      return {};
-    },
-  },
-};
+      return {}
+    }
+  }
+}
 </script>
 
 <style src="../assets/css/style.min.css" scoped></style>
