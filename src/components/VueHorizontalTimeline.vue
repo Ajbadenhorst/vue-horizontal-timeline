@@ -18,12 +18,14 @@
               {{ item[titleAttr] | textSubstr(titleSubstr) }}
             </span>
 
-            <img
-              :src="item[imageUrlAttr]"
-              alt="path picture"
-              width="200"
-              height="200"
-            />
+            <div style="width:100%; text-align:center;">
+              <img
+                style="object-fit: contain;"
+                class="image-size"
+                :src="item[imageUrlAttr]"
+                alt="path picture"
+              />
+            </div>
 
             <div
               style="
