@@ -20,7 +20,7 @@
 
             <div style="width:100%; text-align:center;">
               <img
-                style="object-fit: contain;"
+                style="object-fit: cover;"
                 class="image-size"
                 :src="item[imageUrlAttr]"
                 alt="path picture"

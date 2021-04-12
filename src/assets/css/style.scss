@@ -16,8 +16,8 @@
 }
 @media only screen and (max-width: 600px) {
   .image-size {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
   }
 }
 .vue-horizontal-timeline {
@@ -33,16 +33,24 @@
     .title {
       text-align: center;
       display: block;
-      font-size: 1.4rem;
+      font-size: 1.7rem;
       font-weight: bold;
       margin-bottom: 8px;
     }
     .content {
       text-align: center;
       display: block;
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin-bottom: 4px;
       overflow: hidden;
+    }
+    @media only screen and (max-width: 600px) {
+      li {
+        width: 250px !important;
+      }
+      ol {
+        padding: 290px 0 290px 0 !important;
+      }
     }
     ol {
       overflow-x: auto;
@@ -50,11 +58,7 @@
       width: 100%;
       padding: 350px 0 350px 0;
       transition: all 0.5s;
-      @media only screen and (max-width: 600px) {
-        li {
-          width: 250px !important;
-        }
-      }
+
       li {
         position: relative;
         display: inline-block;
@@ -119,7 +123,7 @@
         }
         &:nth-child(even) {
           .time {
-            top: calc(100% + 16px);
+            top: calc(100% + 14px);
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
             border-bottom-left-radius: 3px;
@@ -142,7 +146,7 @@
         }
         &:nth-child(odd) {
           .time {
-            top: -16px;
+            top: -14px;
             transform: translateY(-100%);
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
