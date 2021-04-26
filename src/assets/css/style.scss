@@ -44,20 +44,32 @@
       margin-bottom: 4px;
       overflow: hidden;
     }
+
     @media only screen and (max-width: 600px) {
       li {
         width: 250px !important;
       }
-      ol {
-        padding: 290px 0 290px 0 !important;
+
+      @media only screen and (max-height: 700px) {
+        ol {
+          padding: 20px 0 !important;
+          height: 100%;
+        }
+      }
+      @media only screen and (min-height: 700px) {
+        ol {
+          padding: 290px 0 290px 0 !important;
+        }
       }
     }
+
     ol {
       overflow-x: auto;
       font-size: 0;
       width: 100%;
       padding: 350px 0 350px 0;
       transition: all 0.5s;
+      height: 100%;
 
       li {
         position: relative;
@@ -96,7 +108,7 @@
           border-radius: 15px !important;
           position: absolute;
           left: 11em;
-          padding: 10px;
+          padding: 7px 10px;
           font-size: 1rem;
           white-space: normal;
           color: black;
@@ -123,7 +135,7 @@
         }
         &:nth-child(even) {
           .time {
-            top: calc(100% + 14px);
+            top: calc(100% + 13px);
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
             border-bottom-left-radius: 3px;
@@ -145,22 +157,43 @@
           }
         }
         &:nth-child(odd) {
-          .time {
-            top: -14px;
-            transform: translateY(-100%);
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
-            border-top-left-radius: 3px;
-            &::before {
-              top: 100%;
-              border-width: 8px 8px 0 0;
-              border-color: white transparent transparent transparent;
-              filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2))
-                drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.14));
-            }
-            &:hover {
+          @media only screen and (max-height: 700px) {
+            .time {
+              top: calc(100% + 13px);
+              border-top-right-radius: 3px;
+              border-bottom-right-radius: 3px;
+              border-bottom-left-radius: 3px;
               &::before {
-                animation: triangle-odd 0.2s both;
+                top: -8px;
+                border-width: 8px 0 0 8px;
+                border-color: transparent transparent transparent white;
+                filter: drop-shadow(1px -1px 1px rgba(0, 0, 0, 0.2));
+              }
+              &:hover {
+                &::before {
+                  animation: triangle-even 0.2s both;
+                }
+              }
+            }
+          }
+          @media only screen and (min-height: 700px) {
+            .time {
+              top: -13px;
+              transform: translateY(-100%);
+              border-top-right-radius: 3px;
+              border-bottom-right-radius: 3px;
+              border-top-left-radius: 3px;
+              &::before {
+                top: 100%;
+                border-width: 8px 8px 0 0;
+                border-color: white transparent transparent transparent;
+                filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2))
+                  drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.14));
+              }
+              &:hover {
+                &::before {
+                  animation: triangle-odd 0.2s both;
+                }
               }
             }
           }
